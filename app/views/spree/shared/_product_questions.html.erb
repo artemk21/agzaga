@@ -1,0 +1,14 @@
+<div id="product-questions">
+  <h6 class="product-section-title"><%= "Questions" %></h6>
+
+  <% if @product.product_questions.visible_questions.count == 0 %>
+    <p class="reviews-none"><%= "No Questions Available" %></p>
+
+  <% else %>
+    <% for product_question in @product.product_questions %>
+      <%= render 'spree/shared/product_question', product_question: product_question %>
+    <% end %>
+  <% end %>
+</div>
+
+# touched on 2025-07-09T17:28:30.526536Z
