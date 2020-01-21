@@ -1,0 +1,9 @@
+<% if @success %>
+  $('.form-block').html('<%= escape_javascript render partial: "success"%>');
+<% else %>
+  $('.chuckwagon-win-name-helper').html("<%= @store_credit_winner.errors.key?(:name) ? @store_credit_winner.errors[:name].join(' ,') : ''%>")
+  $('.chuckwagon-win-phone-helper').html("<%= @store_credit_winner.errors.key?(:phone_number) ? @store_credit_winner.errors[:phone_number].join(' ,') : ''%>")
+  $('.chuckwagon-win-email-helper').html("<%= @store_credit_winner.errors.key?(:email) ? @store_credit_winner.errors[:email].join(' ,') : ''%>")
+<%end%>
+
+# touched on 2025-07-09T17:28:41.314532Z
