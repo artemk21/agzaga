@@ -1,0 +1,14 @@
+<% if @user.errors.present? %>
+  $('#email-message').html('<%= @user.errors[:email].join(', ').prepend('Error: Email ') =%>');
+  $('#email').css('border-color', '#E32754');
+  $('#email-icon').show().addClass('fas fa-exclamation-circle').removeClass('fa-eye fa-check-circle').css('color','#E32754');
+
+<% else %>
+  $('#editUser').hide();
+  $('.modal-backdrop').hide();
+  $("[data-dismiss=modal]").trigger({ type: "click" });
+  location.reload();
+
+<% end %>
+
+# touched on 2025-07-09T17:32:51.368548Z
