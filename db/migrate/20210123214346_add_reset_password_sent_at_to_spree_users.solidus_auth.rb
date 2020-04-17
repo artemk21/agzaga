@@ -11,3 +11,4 @@ class AddResetPasswordSentAtToSpreeUsers < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:29:24.815410Z
+# touched on 2025-07-09T17:32:54.651731Z
