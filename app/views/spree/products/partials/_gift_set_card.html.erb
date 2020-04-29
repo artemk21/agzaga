@@ -1,0 +1,92 @@
+<%= form_for :order, html: { method: :post, remote: :true},  url: populate_orders_path do |f| %>
+  <div class="gift-set-section">
+    <div class="sale-tag d-flex align-items-center">
+      <% if product.on_sale? %>
+        <div class="percent poppins-bold-text-10">
+          <%= number_to_percentage(product.discount_percent.round, precision: 0) %> OFF
+        </div>
+      <% end %>
+
+      <% if product.on_sale? || product.deal_product? %>
+        <div class="tag poppins-bold-text-10">DEAL</div>
+      <% end %>
+    </div>
+
+    <div class="gift-set-header">
+      <div class="gift-set-name-description">
+        <div class="lexend-h3 gift-set-name"> <%= product.name %></div>
+        <div class="full-grey-line d-md-block d-none"></div>
+        <div class="poppins-text-16 gift-set-description d-md-block d-none"> <%= Nokogiri::HTML(product.description).text %></div>
+      </div>
+
+      <div class="text-right price-quantity">
+        <span class="poppins-bold-text-20 selling-price">
+          <%= display_price(product) %>
+        </span>
+
+        <% if product.on_sale? %>
+          <span class="original-price poppins-text-16">
+            <%= Spree::Money.new(product.original_price).to_html %>
+          </span>
+        <% end %>
+
+        <%= hidden_field_tag 'variant_id', product.master.id %>
+        <div class="d-md-block d-none">
+          <div class="poppins-text-10 mb-1 quantity-text d-md-block d-none">Select a quantity:</div>
+          <div class="btns-group">
+            <div class="quantity-btn-group d-flex <%= 'disable-quantity-btn-group' unless product_in_stock?(product) %>">
+              <%= button_tag '', class: 'button disable_btn sub-btn', type: 'button' %>
+
+              <% if product.master.is_backorderable? %>
+
+                <% if product.master.get_max_stock > 0 %>
+                  <%= number_field_tag :quantity, 1, class: 'quantity text-center', min: 1, max: product.master.get_max_stock  %>
+                <% else %>
+                  <%= number_field_tag :quantity, 1, class: 'quantity text-center', min: 1 %>
+                <% end %>
+
+              <% else %>
+                <%= number_field_tag :quantity, 1, class: 'quantity text-center', min: 1, max: product.master.total_on_hand %>
+              <% end%>
+
+              <%= button_tag '', class: 'button add-btn', type: 'button' %>
+            </div>
+            <%= button_tag class: 'poppins-text-12 mt-0 btn-gradient-orange add-to-cart', id: "add-to-cart", type: :submit do %>
+              <%= t('spree.add_to_cart') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="full-grey-line d-block d-md-none"></div>
+
+    <div class="d-block d-md-none">
+      <div class="collapse" id="include-set-<%= product.id %>">
+        <%= render partial: 'spree/products/partials/gift_included_set', locals: {product: product} %>
+      </div>
+    </div>
+
+    <div class="poppins-bold-text-10 d-md-none d-block" id= "expand-text" data-toggle="collapse" data-target="#include-set-<%= product.id %>">
+      <div>What’s Included?</div>
+      <%= image_tag 'arrow_grey.svg' , class: "arrow-collapse" %>
+    </div>
+
+    <a href="<%= product_path(product) %>" class="clear-link">
+      <%= image_tag( product.gallery.images.where(alt: "desktop-image").last.url(:large), alt: product.name, class: 'gift-set-img d-md-block d-none' ) if product.gallery.images.where(alt: "desktop-image").present? %>
+
+      <%= image_tag( product.gallery.images.where(alt: "mobile-image").last.url(:large), alt: product.name, class: 'gift-set-img d-block d-md-none' ) if product.gallery.images.where(alt: "mobile-image").present? %>
+    </a>
+
+    <div class="d-md-none d-block mob-quantity">
+      <%= render partial: 'spree/products/partials/gift_card_btns_group', locals: {product: product} %>
+    </div>
+
+    <div class="lexend-h4 mb-3 d-none d-md-block">Set Includes:</div>
+    <div class="d-md-block d-none">
+      <%= render partial: 'spree/products/partials/gift_included_set', locals: {product: product} %>
+    </div>
+  </div>
+<% end %>
+
+# touched on 2025-07-09T17:33:21.191433Z
