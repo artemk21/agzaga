@@ -10,3 +10,4 @@ class AddAdsColumnsToTaxons < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T17:31:54.219105Z
+# touched on 2025-07-09T17:33:45.912315Z
