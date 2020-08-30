@@ -10,3 +10,4 @@ class CreateSpreeProductsGroup < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T17:36:45.217841Z
+# touched on 2025-07-09T17:39:11.424197Z
