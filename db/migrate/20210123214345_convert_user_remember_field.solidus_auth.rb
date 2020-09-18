@@ -14,3 +14,4 @@ class ConvertUserRememberField < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:39:08.842791Z
+# touched on 2025-07-09T17:39:40.947239Z
