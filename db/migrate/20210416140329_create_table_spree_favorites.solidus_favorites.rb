@@ -16,3 +16,4 @@ class CreateTableSpreeFavorites < SolidusSupport::Migration[5.1]
 end
 
 # touched on 2025-07-09T17:34:52.283566Z
+# touched on 2025-07-09T17:40:46.293604Z
