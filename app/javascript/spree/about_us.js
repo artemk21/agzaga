@@ -1,0 +1,9 @@
+$(document).on('turbolinks:load', function() {
+  if( $('.pages.about_us, .pages.freedom_wrap, .pages.chuckwagon_dvd, .pages.net_wraps, .pages.usa').length) {
+    $('.get-in-touch, #contact-link').on('click', function() {
+      FB.CustomerChat.showDialog()
+    })
+  }
+});
+
+# touched on 2025-07-09T17:41:36.110764Z
