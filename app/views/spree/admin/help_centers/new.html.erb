@@ -1,0 +1,12 @@
+<%= form_for [:admin, @faq] do |f| %>
+
+  <%= render partial: 'form', locals: { f: f } %>
+  <fieldset class="no-border-top">
+    <br>
+    <div class="filter-actions actions" data-hook="buttons">
+      <%= f.submit t('spree.actions.create'), class: 'btn btn-primary' %>
+    </div>
+  </fieldset>
+<% end %>
+
+# touched on 2025-07-09T17:41:48.652985Z
