@@ -1,0 +1,11 @@
+document.getElementById("enrollment-form-wrapper").innerHTML = " ";
+<% if @ffa_chapter.errors.any? %>
+  document.getElementById("enrollment-form-wrapper").innerHTML = "<%= escape_javascript render(partial: 'user_info') %>";
+<% else %>
+  document.getElementById("enrollment-form-wrapper").innerHTML = "<%= escape_javascript render(partial: 'chapter_info') %>";
+  history.pushState({}, null, "<%= wizard_path(:chapter_info) %>");
+<% end %>
+
+window.ffa_chapter_js();
+
+# touched on 2025-07-09T17:44:01.775521Z
