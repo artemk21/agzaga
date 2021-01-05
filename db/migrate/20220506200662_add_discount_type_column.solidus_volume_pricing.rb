@@ -8,3 +8,4 @@ class AddDiscountTypeColumn < ActiveRecord::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:37:45.772656Z
+# touched on 2025-07-09T18:14:55.672338Z
