@@ -9,3 +9,4 @@ class NamespaceTables < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:34:57.345021Z
+# touched on 2025-07-09T18:15:17.848619Z
