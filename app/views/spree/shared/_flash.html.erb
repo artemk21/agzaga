@@ -1,0 +1,13 @@
+<div class="flash-wrapper js-flash-wrapper">
+  <% if flash[:error] && !flash[:error]&.include?("already registered with an email") %>
+    <div class="flash error"><%= flash[:error] %></div>
+  <% end %>
+  <% if notice %>
+    <div class="flash notice"><%= notice %></div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="flash success"><%= flash[:success] %></div>
+  <% end %>
+</div>
+
+# touched on 2025-07-09T18:16:55.140061Z
