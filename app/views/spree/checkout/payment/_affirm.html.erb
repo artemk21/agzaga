@@ -1,0 +1,7 @@
+
+<%= render partial: 'spree/checkout/payment/affirm_javascript' %>
+
+<%= javascript_include_tag "spree/frontend/affirm_checkout" %>
+<div id="affirm_checkout_payload" class="hidden" data-affirm='<%=affirm_payload_json(current_order, payment_method)%>' data-paymentgateway='<%=SolidusAffirm::Gateway.first.id%>' />
+
+# touched on 2025-07-09T18:17:44.838136Z
