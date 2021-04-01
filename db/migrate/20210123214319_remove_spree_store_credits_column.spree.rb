@@ -8,3 +8,4 @@ class RemoveSpreeStoreCreditsColumn < ActiveRecord::Migration[5.0]
 end
 
 # touched on 2025-07-09T18:17:18.641717Z
+# touched on 2025-07-09T18:18:04.330904Z
