@@ -5,3 +5,4 @@ class AddSingleUsageToSpreePromotions < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T17:42:56.627217Z
+# touched on 2025-07-09T18:19:21.691681Z
