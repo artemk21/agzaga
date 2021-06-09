@@ -7,3 +7,4 @@ class AddDefaultBillngFlagToUserAddresses < ActiveRecord::Migration[5.2]
 end
 
 # touched on 2025-07-09T18:16:37.026361Z
+# touched on 2025-07-09T18:21:07.538550Z
