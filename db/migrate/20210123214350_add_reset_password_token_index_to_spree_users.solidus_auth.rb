@@ -35,3 +35,4 @@ class AddResetPasswordTokenIndexToSpreeUsers < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T18:17:16.346907Z
+# touched on 2025-07-09T18:21:14.076525Z
