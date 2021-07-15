@@ -1,0 +1,16 @@
+var product_cards = []
+<% @product_cards.each do |product| %>
+  product_cards.push({
+    card: "<%= j render 'spree/shared/standard_product_card', product: product %>",
+    form: "<%= j render 'spree/pages/partials/cart_flag_form', product: product %>"
+  });
+<% end %>
+
+var sliderCards =  $('#briddon_usa_flag_products').find($('.slider-card[data-tab="<%= params[:tab] %>"]'));
+
+sliderCards.each(function(index){
+  var productCard = product_cards[index];
+  $(this).html(productCard.card + productCard.form).data('loaded', true);
+});
+
+# touched on 2025-07-09T18:22:02.243745Z
