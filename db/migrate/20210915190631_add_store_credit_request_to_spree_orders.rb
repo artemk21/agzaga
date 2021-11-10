@@ -5,3 +5,4 @@ class AddStoreCreditRequestToSpreeOrders < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T18:17:52.811809Z
+# touched on 2025-07-09T18:26:44.789730Z
