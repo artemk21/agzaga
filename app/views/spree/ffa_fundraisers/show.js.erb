@@ -1,0 +1,7 @@
+document.getElementById("enrollment-form-wrapper").innerHTML = " ";
+document.getElementById("enrollment-form-wrapper").innerHTML = "<%= escape_javascript render(partial: step.to_s) %>";
+history.pushState({}, null, "<%= wizard_path(step.to_s) %>");
+
+window.ffa_chapter_js();
+
+# touched on 2025-07-09T18:27:05.195270Z
