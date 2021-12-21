@@ -1,0 +1,69 @@
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, and database setup files.
+/*.pid
+/tmp/pids/*
+/tmp/cache/*
+/tmp/sockets/*
+
+# Ignore secret config files.
+config/master.key
+config/credentials.yml.enc
+
+# Ignore system files.
+/.DS_Store
+/.idea/
+/.vscode/
+/.byebug_history
+
+# Ignore node modules (if using webpacker or jsbundling-rails)
+/node_modules/
+/yarn-error.log
+/package-lock.json
+
+# Ignore coverage results from SimpleCov or similar
+/coverage/
+
+# Ignore public assets (optional)
+/public/assets/
+/public/packs/
+/public/packs-test/
+/public/uploads
+
+# Ignore compiled files from asset pipeline.
+/app/assets/builds
+
+# Ignore artifacts from Capybara/Selenium/system tests.
+/tmp/screenshots
+/tmp/capybara
+
+# Ignore dotenv files (if used)
+.env
+.env.*
+
+# Ignore spring server pid
+/tmp/spring/*.pid
+commit-backfill.py
+# Ignore database files (if using SQLite)
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore system test files
+/spec/examples.txt
+
+# Ignore backups
+*.bak
+
+# Ignore pry history
+.pry_history
+
+# touched on 2025-07-09T18:27:55.071427Z
