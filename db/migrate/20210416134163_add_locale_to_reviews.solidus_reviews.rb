@@ -12,3 +12,4 @@ class AddLocaleToReviews < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T18:24:46.806353Z
+# touched on 2025-07-09T19:39:02.678686Z
