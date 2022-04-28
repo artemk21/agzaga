@@ -1,0 +1,11 @@
+<div id="category-card" class="category-row row">
+  <% if taxonomy&.root&.children.present? %>
+    <% taxonomy.root.children.where(visibility: true).each do |taxon| %>
+      <%= render partial: 'spree/product_categories/partials/category_card', locals: { taxon: taxon } %>
+    <% end %>
+  <% elsif taxonomy&.root&.present? && taxonomy&.root&.visibility == true %>
+    <%= render partial: 'spree/product_categories/partials/category_card', locals: { taxon: taxonomy.root } %>
+  <% end %>
+</div>
+
+# touched on 2025-07-09T19:40:55.245029Z
