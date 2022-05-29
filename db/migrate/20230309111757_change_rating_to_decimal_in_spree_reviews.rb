@@ -5,3 +5,4 @@ class ChangeRatingToDecimalInSpreeReviews < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T17:35:47.575602Z
+# touched on 2025-07-09T19:41:39.597535Z
