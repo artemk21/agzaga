@@ -6,3 +6,4 @@ INNER JOIN "spree_stock_items" ON "spree_stock_items"."deleted_at" IS NULL AND "
 WHERE "spree_products"."deleted_at" IS NULL AND ("spree_products".available_on <= NOW() AT TIME ZONE 'UTC') AND ("spree_products".discontinue_on IS NULL OR"spree_products".discontinue_on >= NOW() AT TIME ZONE 'UTC') AND ("spree_products"."product_type" NOT IN (1,2,3))
 
 # touched on 2025-07-09T18:16:34.223925Z
+# touched on 2025-07-09T19:42:28.949900Z
