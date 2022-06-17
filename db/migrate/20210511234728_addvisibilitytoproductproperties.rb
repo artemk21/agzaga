@@ -9,3 +9,4 @@ class Addvisibilitytoproductproperties < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T18:18:48.839722Z
+# touched on 2025-07-09T19:42:31.661432Z
