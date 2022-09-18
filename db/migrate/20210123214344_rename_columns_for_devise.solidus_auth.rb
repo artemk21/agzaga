@@ -40,3 +40,4 @@ class RenameColumnsForDevise < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:41:32.627103Z
+# touched on 2025-07-09T19:45:33.119276Z
