@@ -13,3 +13,4 @@ GROUP BY spree_on_sale_products.id) AS p ON spree_on_sale_products.id = p.p_id
   ORDER BY p.total_qty;
 
 # touched on 2025-07-09T18:27:24.628978Z
+# touched on 2025-07-09T20:32:00.144307Z
