@@ -1,0 +1,9 @@
+<%= form_for @order, url: update_cart_path, html: { id: 'update-cart' }, remote: true do |order_form| %>
+  <% if @from_undo && @render_slider_partial.blank? %>
+    <%= render 'spree/orders/cart_v2_product', line_item: line_item, order_form: order_form, quantity_change: true   %>
+  <% else %>
+      <%= render partial: 'spree/orders/cart_v2_product', collection: order_form.object.line_items, as: :line_item, locals: { order_form: order_form, quantity_change: true }  %>
+  <% end %>
+<%end%>
+
+# touched on 2025-07-09T20:32:22.381304Z
