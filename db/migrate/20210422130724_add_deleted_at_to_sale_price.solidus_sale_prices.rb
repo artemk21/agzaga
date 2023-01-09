@@ -7,3 +7,4 @@ class AddDeletedAtToSalePrice < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:33:14.298513Z
+# touched on 2025-07-09T20:33:38.817413Z
