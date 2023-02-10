@@ -13,3 +13,4 @@ class AddApplyToAllToVariantPropertyRule < ActiveRecord::Migration[5.1]
 end
 
 # touched on 2025-07-09T17:42:10.587687Z
+# touched on 2025-07-09T20:35:11.312641Z
