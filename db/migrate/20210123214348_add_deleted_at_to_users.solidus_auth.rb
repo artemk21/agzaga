@@ -9,3 +9,4 @@ class AddDeletedAtToUsers < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T20:32:52.523864Z
+# touched on 2025-07-09T20:37:02.826292Z
