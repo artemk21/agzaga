@@ -5,3 +5,4 @@ class AddDropshipToSpreeVariants < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T19:42:35.428174Z
+# touched on 2025-07-09T20:37:07.598927Z
