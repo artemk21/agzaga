@@ -5,3 +5,4 @@ class AddGoogleProductCategoryToSpreeProduct < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T20:34:33.331393Z
+# touched on 2025-07-09T20:37:41.430474Z
