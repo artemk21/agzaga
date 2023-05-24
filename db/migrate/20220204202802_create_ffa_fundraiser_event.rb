@@ -11,3 +11,4 @@ class CreateFfaFundraiserEvent < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T20:37:53.393094Z
+# touched on 2025-07-09T20:38:15.227606Z
