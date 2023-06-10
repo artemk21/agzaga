@@ -5,3 +5,4 @@ class CreateSpreeTaxonWithOnSaleProducts < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T18:20:44.290851Z
+# touched on 2025-07-09T20:38:39.298927Z
