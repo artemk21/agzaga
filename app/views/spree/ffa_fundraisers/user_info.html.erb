@@ -1,0 +1,10 @@
+<%= render 'spree/ffa_fundraisers/user_info' %>
+<script src="https://cdn.hellosign.com/public/js/embedded/v2.10.0/embedded.production.min.js"></script>
+
+<script>
+  var client = new window.HelloSign({
+    clientId: "<%= ENV['HELLOSIGN_CLIENT_ID'] %>"
+  });
+</script>
+
+# touched on 2025-07-09T20:39:55.087750Z
