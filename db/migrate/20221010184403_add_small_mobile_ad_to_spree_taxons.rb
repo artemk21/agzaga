@@ -9,3 +9,4 @@ class AddSmallMobileAdToSpreeTaxons < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T19:39:52.268171Z
+# touched on 2025-07-09T20:54:21.130027Z
