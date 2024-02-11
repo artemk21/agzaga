@@ -12,3 +12,4 @@ class MakeUsersEmailIndexUnique < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T20:32:24.628837Z
+# touched on 2025-07-09T20:55:21.816122Z
