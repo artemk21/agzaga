@@ -8,3 +8,4 @@ class AddLeasableToSpreeProducts < ActiveRecord::Migration[5.1]
 end
 
 # touched on 2025-07-09T17:40:43.583947Z
+# touched on 2025-07-09T20:56:44.413054Z
