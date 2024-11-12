@@ -62,3 +62,4 @@ class AddAmountRemainingToStoreCreditEvents < ActiveRecord::Migration[5.0]
 end
 
 # touched on 2025-07-09T20:35:48.067828Z
+# touched on 2025-07-09T21:21:02.906592Z
