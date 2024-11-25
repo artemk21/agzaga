@@ -3,3 +3,4 @@ my-sample-product,Sample Product,true,,,,Default Title,,,,,,https://github.com/s
 my-sample-product,,true,my-sample-product-1,10,5,Black,color,weight,size,50,m,,,https://github.com/solidusio/solidus/raw/master/sample/db/samples/images/solidus_tshirt_back_black.png
 my-sample-product,,true,my-sample-product-2,10,5,Blue,color,weight,size,50,m,,,https://github.com/solidusio/solidus/raw/master/sample/db/samples/images/solidus_tshirt_back_blue.png
 # touched on 2025-07-09T20:35:52.937108Z
+# touched on 2025-07-09T21:21:14.871151Z
