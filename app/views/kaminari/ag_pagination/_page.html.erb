@@ -1,0 +1,5 @@
+<span class="page<%= ' current' if page.current? %>">
+  <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
+</span>
+
+# touched on 2025-07-09T19:42:41.197429Z

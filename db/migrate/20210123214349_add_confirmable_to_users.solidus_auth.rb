@@ -10,3 +10,4 @@ class AddConfirmableToUsers < SolidusSupport::Migration[4.2]
 end
 
 # touched on 2025-07-09T17:35:57.946475Z
+# touched on 2025-07-09T19:43:45.439770Z

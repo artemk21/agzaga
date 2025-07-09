@@ -1,0 +1,7 @@
+<% if SolidusAffirm::Gateway.first.present? %>
+  <% content_for :head do %>
+    <%= affirm_js_setup(SolidusAffirm::Gateway.first.preferred_public_api_key, SolidusAffirm::Gateway.first.preferred_javascript_url) %>
+  <% end %>
+<% end %>
+
+# touched on 2025-07-09T19:38:28.942742Z

@@ -1,0 +1,8 @@
+<% order ||= false %>
+<% saved_item ||= false %>
+<% @saveditems ||= spree_current_user.save_items if spree_current_user.present? %>
+<%= @order&.line_items&.count || 0 if order.present? %>
+<%= @saveditems.count if saved_item.present? %>
+
+# touched on 2025-07-09T19:39:34.751658Z
+# touched on 2025-07-09T19:43:12.997373Z

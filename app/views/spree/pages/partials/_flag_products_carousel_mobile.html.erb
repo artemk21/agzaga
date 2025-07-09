@@ -1,0 +1,17 @@
+<div class="data-container featured-carousel">
+  <div class="container-fluid p-0">
+    <div id="addition-carousel" class="owl-carousel owl-theme home-page-slider">
+      <% flag_product_cards = load_product_cards(flag_products) %>
+      <% flag_product_cards.each do |product| %>
+        <div class="item">
+          <a href="<%= product_path(product.slug) %>" class="clear-link" data-turbolinks="false">
+            <%= render partial: 'spree/shared/standard_product_card', locals: { product: product } %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+# touched on 2025-07-09T19:39:05.145361Z
+# touched on 2025-07-09T19:41:23.630781Z

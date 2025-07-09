@@ -1,0 +1,141 @@
+<div class="customer search-text d-lg-none" data-toggle="collapse" data-target="#prod-review" aria-expanded="false" aria-controls="prod-review">
+  <div class="reviews-count">
+    <% unless hide_rating_number %>
+      Reviews <span class="count"> <%= @product.reviews_count %>  </span>
+    <% end %>
+  </div>
+
+  <div class="stars" id="customer-review" data-toggle="collapse" data-target="#prod-review" aria-expanded="false" aria-controls="prod-review">
+    <div class="rating-stars">
+      <input
+        name = "review[rating]"
+        class="rating"
+        max="5"
+        oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+        step="0.5"
+        style="--value:<%= @product.avg_rating %>"
+        type="range" class="rating_star" disabled>
+
+    </div>
+    <% if @product.reviews.present? %>
+      <span class="count"> <%=review_avg%> </span>
+    <% end %>
+  </div>
+</div>
+
+<% if product.reviews.approved.present? %>
+  <div id="prod-review" class="prod-review-section" aria-labelledby="customer-review" data-parent="#review-collapse-group">
+    <div class="prod-reviews-total-count-section"Reviews>
+      <div class="total-reviews-count d-lg-block d-none">
+        <% unless hide_rating_number %>
+          <span class="count"> <%= product.reviews_count %>  Reviews </span>
+        <% end %>
+      </div>
+      <div class="reviews-filteration">
+
+        <div class="select-star-rating">
+          Filter By Rating:
+        </div>
+
+        <div class="review-star-radio-buttons">
+
+          <%= link_to  product_reviews_products_path(stars: '5', product_id: product.id), remote: true, class: "star-5" do %>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_309_36610)">
+              <path d="M7.41527 1.325C7.5576 0.98279 8.04237 0.982789 8.1847 1.32499L9.81828 5.25258C9.87828 5.39684 10.014 5.49541 10.1697 5.5079L14.4099 5.84783C14.7793 5.87745 14.9291 6.3385 14.6476 6.57961L11.4171 9.34692C11.2984 9.44857 11.2466 9.60806 11.2828 9.76004L12.2698 13.8977C12.3558 14.2582 11.9636 14.5432 11.6473 14.35L8.01718 12.1327C7.88384 12.0512 7.71614 12.0512 7.5828 12.1327L3.95263 14.35C3.63634 14.5432 3.24415 14.2582 3.33015 13.8977L4.31713 9.76004C4.35339 9.60806 4.30157 9.44857 4.1829 9.34692L0.952351 6.57961C0.670878 6.3385 0.820679 5.87745 1.19012 5.84783L5.43028 5.5079C5.58602 5.49541 5.72169 5.39684 5.7817 5.25258L7.41527 1.325Z" fill="#52525B"/></g>
+              <defs><clipPath id="clip0_309_36610"><rect width="16" height="16" fill="white" transform="translate(-0.200012)"/></clipPath></defs>
+            </svg>5
+          <%end%>
+
+          <%= link_to product_reviews_products_path(stars: '4', product_id: product.id), remote: true, class: "star-4" do %>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_309_36610)">
+              <path d="M7.41527 1.325C7.5576 0.98279 8.04237 0.982789 8.1847 1.32499L9.81828 5.25258C9.87828 5.39684 10.014 5.49541 10.1697 5.5079L14.4099 5.84783C14.7793 5.87745 14.9291 6.3385 14.6476 6.57961L11.4171 9.34692C11.2984 9.44857 11.2466 9.60806 11.2828 9.76004L12.2698 13.8977C12.3558 14.2582 11.9636 14.5432 11.6473 14.35L8.01718 12.1327C7.88384 12.0512 7.71614 12.0512 7.5828 12.1327L3.95263 14.35C3.63634 14.5432 3.24415 14.2582 3.33015 13.8977L4.31713 9.76004C4.35339 9.60806 4.30157 9.44857 4.1829 9.34692L0.952351 6.57961C0.670878 6.3385 0.820679 5.87745 1.19012 5.84783L5.43028 5.5079C5.58602 5.49541 5.72169 5.39684 5.7817 5.25258L7.41527 1.325Z" fill="#52525B"/></g>
+              <defs><clipPath id="clip0_309_36610"><rect width="16" height="16" fill="white" transform="translate(-0.200012)"/></clipPath></defs>
+            </svg>4
+          <%end%>
+
+          <%= link_to product_reviews_products_path(stars: '3', product_id: product.id), remote: true, class: "star-4" do %>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_309_36610)">
+              <path d="M7.41527 1.325C7.5576 0.98279 8.04237 0.982789 8.1847 1.32499L9.81828 5.25258C9.87828 5.39684 10.014 5.49541 10.1697 5.5079L14.4099 5.84783C14.7793 5.87745 14.9291 6.3385 14.6476 6.57961L11.4171 9.34692C11.2984 9.44857 11.2466 9.60806 11.2828 9.76004L12.2698 13.8977C12.3558 14.2582 11.9636 14.5432 11.6473 14.35L8.01718 12.1327C7.88384 12.0512 7.71614 12.0512 7.5828 12.1327L3.95263 14.35C3.63634 14.5432 3.24415 14.2582 3.33015 13.8977L4.31713 9.76004C4.35339 9.60806 4.30157 9.44857 4.1829 9.34692L0.952351 6.57961C0.670878 6.3385 0.820679 5.87745 1.19012 5.84783L5.43028 5.5079C5.58602 5.49541 5.72169 5.39684 5.7817 5.25258L7.41527 1.325Z" fill="#52525B"/></g>
+              <defs><clipPath id="clip0_309_36610"><rect width="16" height="16" fill="white" transform="translate(-0.200012)"/></clipPath></defs>
+            </svg>3
+          <%end%>
+
+          <%= link_to product_reviews_products_path(stars: '2', product_id: product.id), remote: true, class: "star-4" do %>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_309_36610)">
+              <path d="M7.41527 1.325C7.5576 0.98279 8.04237 0.982789 8.1847 1.32499L9.81828 5.25258C9.87828 5.39684 10.014 5.49541 10.1697 5.5079L14.4099 5.84783C14.7793 5.87745 14.9291 6.3385 14.6476 6.57961L11.4171 9.34692C11.2984 9.44857 11.2466 9.60806 11.2828 9.76004L12.2698 13.8977C12.3558 14.2582 11.9636 14.5432 11.6473 14.35L8.01718 12.1327C7.88384 12.0512 7.71614 12.0512 7.5828 12.1327L3.95263 14.35C3.63634 14.5432 3.24415 14.2582 3.33015 13.8977L4.31713 9.76004C4.35339 9.60806 4.30157 9.44857 4.1829 9.34692L0.952351 6.57961C0.670878 6.3385 0.820679 5.87745 1.19012 5.84783L5.43028 5.5079C5.58602 5.49541 5.72169 5.39684 5.7817 5.25258L7.41527 1.325Z" fill="#52525B"/></g>
+              <defs><clipPath id="clip0_309_36610"><rect width="16" height="16" fill="white" transform="translate(-0.200012)"/></clipPath></defs>
+            </svg>2
+          <%end%>
+
+          <%= link_to product_reviews_products_path(stars: '1', product_id: product.id), remote: true, class: "star-1" do %>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_309_36610)">
+              <path d="M7.41527 1.325C7.5576 0.98279 8.04237 0.982789 8.1847 1.32499L9.81828 5.25258C9.87828 5.39684 10.014 5.49541 10.1697 5.5079L14.4099 5.84783C14.7793 5.87745 14.9291 6.3385 14.6476 6.57961L11.4171 9.34692C11.2984 9.44857 11.2466 9.60806 11.2828 9.76004L12.2698 13.8977C12.3558 14.2582 11.9636 14.5432 11.6473 14.35L8.01718 12.1327C7.88384 12.0512 7.71614 12.0512 7.5828 12.1327L3.95263 14.35C3.63634 14.5432 3.24415 14.2582 3.33015 13.8977L4.31713 9.76004C4.35339 9.60806 4.30157 9.44857 4.1829 9.34692L0.952351 6.57961C0.670878 6.3385 0.820679 5.87745 1.19012 5.84783L5.43028 5.5079C5.58602 5.49541 5.72169 5.39684 5.7817 5.25258L7.41527 1.325Z" fill="#52525B"/></g>
+              <defs><clipPath id="clip0_309_36610"><rect width="16" height="16" fill="white" transform="translate(-0.200012)"/></clipPath></defs>
+            </svg>1
+          <%end%>
+
+        </div>
+
+        <div class="sorting">
+          <div class="short-by-review search-text" id="sort-reviews" data-toggle="collapse" data-target="#reviews-sorting" aria-expanded="false" aria-controls="reviews-sorting">
+            <div class="questions-count">
+              <% unless hide_rating_number %>
+                <span class="count">Sort By   </span>
+              <% end %>
+            </div>
+          </div>
+
+
+            <div id="reviews-sorting" class="collapse reviews-sorting-section" aria-labelledby="sort-reviews" data-parent="#faq-collapse-group">
+
+              <a><%= link_to 'Highest Rating', spree.product_url(highest_rating: true), class: 'clear-link dropdown-item',remote: true%></a>
+              <div class="dropdown-divider"></div>
+              <a><%= link_to 'Lowest Rating', spree.product_url(lowest_rating: true), class: 'clear-link dropdown-item',remote: true%></a>
+              <div class="dropdown-divider"></div>
+              <a><%= link_to 'Newest', spree.product_url, class: 'clear-link dropdown-item',remote: true%></a>
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="line-review-section d-lg-block d-none"></div>
+
+    <div class="customer-review-stars" >
+      <%= render partial: 'spree/products/partials/customer_reviews_stars', locals: { reviews: @product_reviews} %>
+    </div>
+
+    <div class="reviews-pagination d-lg-none d-block">
+      <%= paginate @product_reviews, theme: 'review_pagination', remote: true, params: {count: @product_reviews.count} %>
+    </div>
+
+    <div class="reviews-pagination d-lg-block d-none">
+      <%= paginate @product_reviews, theme: 'ag_pagination', remote: true, class: 'ag-pagination', params: {count: @product_reviews.count, for_desktop: true} %>
+    </div>
+  </div>
+<% else %>
+  <div id="prod-review" class="collapse prod-no-review-section" aria-labelledby="customer-review" data-parent="#review-collapse-group">
+    <div class="review-heading">We Can't Find Any Reviews, Yet</div>
+      <%= image_tag "Conection-Lost.png", class: "image", alt: 'No Review Image' %>
+    <div class="text-body">Be the first to help other shoppers!</div>
+
+    <% if spree_user_signed_in? %>
+      <div class="ag-btn no-review-btn">
+        <%= link_to reviews_form_product_path("#{@product.slug}")do %>
+          Write a Review
+        <% end %>
+      </div>
+    <% else %>
+      <div class="ag-btn no-review-btn" data-toggle="modal" data-target=".checkout-login-modal">
+        <%= image_tag "user_icon_black.svg", class: "icon", alt: "Login" %> Login to leave a review
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+# touched on 2025-07-09T19:39:55.008247Z
