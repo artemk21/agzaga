@@ -8,3 +8,4 @@ class AddUnconfirmedEmailToSpreeUsers < SolidusSupport::Migration[5.1]
 end
 
 # touched on 2025-07-09T17:38:33.042182Z
+# touched on 2025-07-09T20:36:01.392283Z

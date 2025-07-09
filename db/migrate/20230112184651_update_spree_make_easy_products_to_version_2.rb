@@ -5,3 +5,4 @@ class UpdateSpreeMakeEasyProductsToVersion2 < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T18:25:03.430622Z
+# touched on 2025-07-09T20:40:57.326907Z

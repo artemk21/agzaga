@@ -1,0 +1,26 @@
+<div class="d-flex store-credit-input">
+  <div class="store-credit-mob">
+    <div class="black-input-group ag-form-control exclusive-offer">
+      <div class="ag-check form-control-content">
+        <label class="poppins-text-16 apply-store-credit-label poppins-text-16 ag-checkbox form-control-sub-title">
+          Apply Store Credit
+          <input class="checkbox" type='checkbox' name="address" id="store-credit-checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="poppins-text-16 offline-txt btn-cash" id="user-total-available-store-credit" data-credit-amount="<%= spree_current_user.total_available_store_credit %>">
+      <%= spree_current_user.display_total_available_store_credit %> Available
+    </div>
+  </div>
+
+  <label class="poppins-text-16 custom-field-store field-required custom-field-price">
+    <input id="store-credit-request-input" class="store-credit custom-store-input input-field input-field-amount" name="store_credit_request" type="text" placeholder="$" disabled>
+    <div class="invalid-feedback store-error">
+      Not enough credit available
+    </div>
+  </label>
+</div>
+
+# touched on 2025-07-09T20:37:38.717510Z

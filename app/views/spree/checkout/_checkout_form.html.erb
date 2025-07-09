@@ -1,0 +1,11 @@
+<%= form_for @order, url: update_checkout_path(@order.state), remote: true, html: { id: "checkout_form_#{@order.state}" } do |form| %>
+
+  <div class="input-form-group">
+    <%= render @order.state, form: form %>
+  </div>
+
+  <button id="checkout-payment-button" class="d-none" type="submit"></button>
+<% end %>
+
+
+# touched on 2025-07-09T20:37:50.924980Z
