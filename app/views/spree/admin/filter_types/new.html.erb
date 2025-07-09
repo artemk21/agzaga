@@ -1,0 +1,12 @@
+<%= render partial: 'spree/shared/error_messages', locals: { target: @filter_type } %>
+
+<%= form_for [:admin, @filter_type] do |f| %>
+  <fieldset>
+    <legend align="center"><%= t('spree.new_filter_type') %></legend>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>
+
+# touched on 2025-07-09T21:20:20.333720Z
+# touched on 2025-07-09T21:22:54.604728Z
