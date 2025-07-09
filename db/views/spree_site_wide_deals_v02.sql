@@ -6,3 +6,4 @@ WHERE "spree_labels"."tag" = 'Site Wide Deals'
 ORDER BY "spree_labels_products"."position" ASC
 
 # touched on 2025-07-09T17:42:53.340341Z
+# touched on 2025-07-09T18:21:02.481892Z

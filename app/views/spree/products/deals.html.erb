@@ -1,0 +1,176 @@
+<div class="cta-container">
+  <picture>
+    <source media="(max-width:414px)" srcset="https://assets.agzaga.com/CTA%2Fgeneric-deals-mobile.webp" type="image/webp">
+    <source media="(max-width:414px)" srcset="https://assets.agzaga.com/CTA%2Fgeneric-deals-mobile.jpg" type="image/jpeg" >
+
+    <source media="(max-width:767px)" srcset="https://assets.agzaga.com/CTA%2Fgeneric-deals-tab.webp" type="image/webp">
+    <source media="(max-width:767px)" srcset="https://assets.agzaga.com/CTA%2Fgeneric-deals-tab.jpg" type="image/jpeg" >
+
+    <source srcset="https://assets.agzaga.com/CTA%2Fgeneric-deals.webp" type="image/webp" >
+    <img data-src="https://assets.agzaga.com/CTA%2Fgeneric-deals.jpg" alt="Deals" class="d-block w-100 outerdiv-img" >
+  </picture>
+</div>
+
+<div class="categories-group">
+  <h3 class="heading">Shop Deals by Category</h3>
+
+  <div class="categories-slider">
+    <div class="category-circle">
+      <%= link_to spree::deals_products_url, class: 'circle' do %>
+        <%= image_tag 'https://assets.agzaga.com/public_images/deals_black_friday.webp', class: 'image' %>
+      <% end %>
+
+      <%= link_to 'All Deals', spree::deals_products_url, class: 'name' %>
+    </div>
+
+    <div class="category-circle">
+      <%= link_to spree::gift_page_products_path, class: 'circle' do %>
+        <%= image_tag 'https://assets.agzaga.com/public_images/deals_gift_bundle.webp', class: 'image' %>
+      <% end %>
+
+      <%= link_to 'Gift Bundles', spree::gift_page_products_path, class: 'name' %>
+    </div>
+
+    <% @taxonmies.each do |taxonomy| %>
+      <% root_taxon = taxonomy.root %>
+
+      <div class="category-circle">
+        <%= link_to spree::deals_products_url(category: [root_taxon.id]), class: 'circle' do %>
+          <%= image_tag image_cdn_link(root_taxon.icon(:normal)), class: 'image' %>
+        <% end %>
+
+        <%= link_to root_taxon.name, spree::deals_products_url(category: [root_taxon.id]), class: 'name' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="sorting-filter">
+  <div class="products-sort">
+    <div class="dropdown">
+      <div class="poppins-text-16 sort_by-btn <%= 'sorted' if h(params.dig(:order_by)).present? %>"  data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.11111 13.1112V3.77783M6.11111 3.77783L3 6.88894M6.11111 3.77783L9.22222 6.88894M13.8889 6.88894V16.2223M13.8889 16.2223L17 13.1112M13.8889 16.2223L10.7778 13.1112" stroke="#52525B" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <% if h(params.dig(:order_by)) != '' %>
+          <%= h(params.dig(:order_by)) %>
+        <% else %>
+          Sort By
+        <% end %>
+      </div>
+
+      <div class="dropdown-menu sort_by-options">
+        <%= link_to "Staff Pick", spree::deals_products_url(request.query_parameters.merge( order_by: "Staff Pick")), class: "p-0 poppins-text-16 dropdown-item", rel: 'nofollow' %>
+
+        <%= link_to "Best Sellers", spree::deals_products_url(request.query_parameters.merge( order_by: "Best Sellers")), class: "p-0 poppins-text-16 dropdown-item", rel: 'nofollow' %>
+
+        <%= link_to "Price: Low to High", spree::deals_products_url(request.query_parameters.merge( order_by: 'Price: Low to High')), class: "p-0 poppins-text-16 dropdown-item", rel: 'nofollow' %>
+
+        <%= link_to "Price: High to Low", spree::deals_products_url(request.query_parameters.merge( order_by: 'Price: High to Low')), class: "p-0 poppins-text-16 dropdown-item", rel: 'nofollow' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="navigation-border-bottom"></div>
+</div>
+
+<div class="content-group">
+  <div class="filters-section animate__animated">
+    <div class="mobile-filter-header">
+      <div class="heading">
+        <%= image_tag "filter-icon.svg", alt: 'filter-icon' %>
+        Filter
+
+        <% if params[:category].present? %>
+          <span class="filter-count"><%= params[:category].length %></span>
+        <% end %>
+      </div>
+
+      <div class="close-filter-btn">
+        <%= image_tag "close-btn-nav.svg", alt: 'close-icon' %>
+      </div>
+    </div>
+
+    <div class="price-category-filter-section">
+      <div class="section-heading">Price</div>
+
+      <div class="price-filters-group">
+        <%= link_to "All Price", spree::deals_products_url(request.query_parameters.except(:filter_by_price)), class: "price-filter #{'active' if params[:filter_by_price].blank? }", rel: "nofollow" %>
+
+        <%= link_to "Under $25",   spree::deals_products_url(request.query_parameters.merge(filter_by_price: 'under_25')), class: "price-filter #{'active' if params[:filter_by_price] == 'under_25'}", rel: "nofollow" %>
+
+        <%= link_to "$25-$50", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '25-50')), class: "price-filter #{'active' if params[:filter_by_price] == '25-50'}", rel: "nofollow" %>
+
+        <%= link_to "$50-$100", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '50-100')), class: "price-filter #{'active' if params[:filter_by_price] == '50-100'}", rel: "nofollow" %>
+
+        <%= link_to "$100-$200", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '100-200')), class: "price-filter #{'active' if params[:filter_by_price] == '100-200'}", rel: "nofollow" %>
+
+        <%= link_to "$200 & Up", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '200+')), class: "price-filter #{'active' if params[:filter_by_price] == '200+'}", rel: "nofollow" %>
+      </div>
+
+      <div class="category-filter-section">
+        <div class="section-heading category">Categories</div>
+
+        <%= link_to "Clear Selections", spree::deals_products_url, class: "clear-selection #{'show' if params[:category].present?}" %>
+
+        <% taxon_filter_ids = request.query_parameters[:category] || [] %>
+        <% @taxonmies.each do |taxonomy| %>
+          <div>
+            <% root_taxon = taxonomy.root %>
+
+            <% taxons = @taxons.select{|t| t.taxonomy_id  == taxonomy.id } %>
+
+            <% toxons_id_with_root = [root_taxon.id.to_s, taxons.pluck(:id).map(&:to_s)].flatten %>
+
+            <% root_selected = (taxon_filter_ids & toxons_id_with_root).any? %>
+
+            <%= link_to root_taxon.name, spree::deals_products_url(category:  root_selected ? taxon_filter_ids - toxons_id_with_root : taxon_filter_ids + [root_taxon.id]), class: "filter-link #{'selected' if root_selected}" %>
+          </div>
+
+          <% taxons.each do |taxon| %>
+            <% next if taxon.id == root_taxon.id %>
+
+            <div>
+              <% selected = taxon_filter_ids.include?(taxon.id.to_s) %>
+
+              <%= link_to taxon.name, spree::deals_products_url(category:  ( selected ? taxon_filter_ids - [taxon.id.to_s] : (taxon_filter_ids + [taxon.id]) - [root_taxon.id.to_s])), class: "nested filter-link #{'selected' if selected}" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-backdrop"></div>
+
+  <div class="filter-section-mobile">
+    <div class="category-filter-mobile">
+      <%= image_tag "filter-icon-mobile.svg", alt: 'filter-icon' %>
+      Filter
+      <% if params[:category].present? %>
+        <span class="filter-count"><%= params[:category].length %></span>
+      <% end %>
+    </div>
+
+    <div class="poppins-text-16 sort_by-btn <%= 'sorted' if h(params.dig(:order_by)).present? %>"  data-display="static" aria-haspopup="true" aria-expanded="true" data-toggle="modal" data-target="#sortingModal">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.11111 13.1112V3.77783M6.11111 3.77783L3 6.88894M6.11111 3.77783L9.22222 6.88894M13.8889 6.88894V16.2223M13.8889 16.2223L17 13.1112M13.8889 16.2223L10.7778 13.1112" stroke="#52525B" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <%= h(params.dig(:order_by)).present? ? h(params.dig(:order_by)) : 'Sort By' %>
+    </div>
+  </div>
+
+  <div class="products-section">
+    <% @product_cards.each do |product_card| %>
+      <%= render 'spree/shared/standard_product_card', product: product_card %>
+    <% end %>
+
+    <%= paginate @products, theme: 'ag_pagination', left: 3, right: 1, window: 1 %>
+  </div>
+</div>
+
+<%= render 'spree/shared/sorting_modal', deals_page: :true %>
+
+# touched on 2025-07-09T18:24:23.550896Z

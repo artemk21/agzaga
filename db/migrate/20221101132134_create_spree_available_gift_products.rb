@@ -5,3 +5,4 @@ class CreateSpreeAvailableGiftProducts < ActiveRecord::Migration[6.1]
 end
 
 # touched on 2025-07-09T17:35:32.720249Z
+# touched on 2025-07-09T18:21:32.261712Z

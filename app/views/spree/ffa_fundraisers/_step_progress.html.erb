@@ -1,0 +1,7 @@
+<% total_levels = 4 %>
+<div class="step-progress <%= 'finish-progress' if level == total_levels %>">
+  <div class="step-progress-bar <%= 'completed' if level == total_levels %>" style="width: <%= level * (100/total_levels) %>%">
+  </div>
+</div>
+
+# touched on 2025-07-09T18:25:20.643308Z

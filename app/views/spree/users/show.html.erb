@@ -1,0 +1,157 @@
+<div class="data-container">
+  <%= image_tag 'setting_icon_gold.svg', class: 'setting-icon' %>
+  <h1 class="draught-textured-h1 main-heading">Account Information</h1>
+
+  <div data-hook="account_summary" class="row account-summary">
+    <div class="col-md-6 email-group">
+      <div class="info-group">
+        <label class="poppins-text-18 d-block">Email Address</label>
+        <div class="display-field poppins-text-18">
+          <%= @user.email %>
+          <%= link_to 'Edit', spree.edit_account_path,  "data-toggle" => "modal", 'data-target' => "#editUser", "data-whatever" => "#{@user.email}", class: 'clear-link poppins-text-16 green-link d-none d-md-block d-lg-block' %>
+          <a class="d-block d-md-none" data-toggle="modal" data-target="#editUser" data-whatever= "<%= @user.email %>"><%= image_tag 'edit_icon.svg' %></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 password-group">
+      <div class="info-group">
+        <label class="poppins-text-18 d-block">Password</label>
+        <div class="display-field poppins-text-18">
+          <input type="password" readonly="true" value="12345678" class="password-input">
+          <%= link_to 'Change', spree.edit_account_path, "data-toggle" => "modal", 'data-target' => "#editUser", "data-whatever" => "#{@user.email}", class: 'clear-link poppins-text-16 green-link d-none d-md-block d-lg-block' %>
+          <a class="d-block d-md-none" data-toggle="modal" data-target="#editUser" data-whatever="<%= @user.email %>"><%= image_tag 'edit_icon.svg' %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render partial: 'spree/users/partials/edit'%>
+
+  <div class="row">
+    <div class="col-12 line"></div>
+  </div>
+
+  <h2 class="draught-h2 orders-heading" id="my-orders">My Orders</h2>
+
+  <div class="filters-group">
+    <%= form_tag account_path, method: :get, class: 'filters-form' do %>
+      <div class="search-group">
+        <button type="submit" class="order-md-1 order-2 filters-submit-btn">
+          <%= image_tag 'search_icon_warm.svg', class: 'search-btn' %>
+        </button>
+
+        <%= text_field_tag :order_number, nil, placeholder: 'Search by order number or product name', class: 'order-md-2 order-1 d-md-block d-none poppins-text-16 search-input-field' %>
+        <%= text_field_tag :order_number, nil, placeholder: 'Search by order # or product', class: 'order-md-2 order-1 d-md-none d-block poppins-text-16 search-input-field' %>
+      </div>
+
+      <div class="date-range-group">
+        <%= image_tag 'calendar_icon_gold.svg', class: 'calendar-icon' %>
+        <%= text_field_tag 'completed_between', "", placeholder: 'All Dates', class: 'flatpickr' %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div data-hook="account_my_orders" class="account-my-orders">
+
+    <% if @orders.present? %>
+
+      <% @orders.each do |order| %>
+        <div class="order-details text-left">
+          <div class="summary-short-group d-flex align-items-center" data-toggle="collapse" data-target="#order-collapse-<%= order.number %>" aria-expanded="false" aria-controls="order-collapse-<%= order.number %>">
+
+            <div class="order-toggle-icon"></div>
+
+            <div class="d-block w-100">
+              <div class="order-date poppins-text-18 d-flex">
+                <%= image_tag 'calendar_icon.svg', class: 'd-none d-md-block pr-2' %>
+                <%= order.completed_at.to_date.strftime("%m/%d/%Y") %>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="order-number-heading draught-h2">
+                  Order Number
+                </div>
+
+                <div class="order-total poppins-text-32 pl-3">
+                  <%= order.display_total %>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="order-number poppins-text-24 bold p-0 m-0">
+                  <%= order.number %>
+                </p>
+
+                <a class="d-md-none view-receipt poppins-text-11 bold">View Receipt</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-details-group collapse" id="order-collapse-<%= order.number %>">
+            <div class="order-summary-head d-flex align-items-center justify-content-between">
+              <div class="order-summary-heading draught-h2">
+                  Order Summary
+              </div>
+
+              <div class="d-md-flex d-none">
+                <% order.shipments.each do |shipment| %>
+                  <% if shipment.tracking_lookup.present? %>
+                    <%= link_to shipment.tracking_lookup, target: "_blank", class: "track-link popping-text-18" do %>
+                      Track Order
+                      <%= image_tag 'truck_sm.svg'%>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div class="d-flex d-md-none">
+                <a class="track-link popping-text-18">Track</a>
+                <%= image_tag 'truck_sm_olive.svg'%>
+              </div>
+            </div>
+
+            <div class="products">
+              <% order.line_items.each do |product| %>
+
+                <div class="product">
+                  <div class="product-info">
+
+                    <div class="image">
+                      <%= render( 'spree/shared/image', image: ( product.variant.gallery.images.first || product.variant.product.gallery.images.first ), size: :small ) %>
+                    </div>
+
+                    <div class="product-content">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="poppins-bold-text-32 product-name">
+                          <%= product.variant.name %>
+                        </div>
+
+                        <div class="poppins-bold-text-28 product-total pl-3"><%= number_to_currency product.total %></div>
+                      </div>
+
+                      <div class="poppins-text-24 option-values">
+                        <%= product.variant.option_values.pluck(:name).join(', ') %>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= paginate @orders, left: 3, right: 1, window: 1 %>
+
+    <% else %>
+      <p class="poppins-text-20">
+        No Order Found
+      </p>
+    <% end %>
+  </div>
+</div>
+
+# touched on 2025-07-09T18:26:16.348719Z

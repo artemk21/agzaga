@@ -6,3 +6,5 @@ class AddCheckoutTokenToAffirmV2Transactions < ActiveRecord::Migration[5.1]
 end
 
 # touched on 2025-07-09T17:33:17.979394Z
+# touched on 2025-07-09T18:15:03.568897Z
+# touched on 2025-07-09T18:21:29.646364Z

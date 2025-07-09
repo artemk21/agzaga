@@ -1,0 +1,11 @@
+class AddPositionToSpreeProducts < ActiveRecord::Migration[6.1]
+  def up
+    add_column :spree_products, :position, :integer
+  end
+
+  def down
+    remove_column :spree_products, :position
+  end
+end
+
+# touched on 2025-07-09T18:27:49.636479Z
