@@ -1,0 +1,6 @@
+<div class="form-buttons filter-actions actions" data-hook="buttons">
+  <%= button_tag t('spree.actions.update'), class: 'btn btn-primary', disabled: @user&.deleted? %>
+  <%= link_to t('spree.actions.cancel'), collection_url, class: 'button', disabled: @user&.deleted? %>
+</div>
+
+# touched on 2025-07-09T17:43:06.457011Z

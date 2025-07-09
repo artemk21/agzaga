@@ -1,0 +1,52 @@
+<% page ||= 'faq' %>
+
+<div class="data-container contact-methods-section">
+  <div class="poppins-h3 text-center" id="still-have-questions">
+    <% if page == 'contact' %>
+      NEED SUPPORT FAST?
+
+    <% else %>
+      Still have questions?
+    <% end %>
+  </div>
+
+  <% if page == 'contact' %>
+    <p class="poppins-text-16 bold sub-text">
+      Whether you’ve got an emergency, have a question, or just want to talk—we’re available for you Monday-Friday, 9am–5pm CST.
+    </p>
+  <% end %>
+
+  <div class="row text-center m-0" id="contact-methods-group">
+    <div class="col-sm-4 contact-method">
+      <div class="method-icon">
+        <%= image_tag "mail.svg", alt: 'Mail' %>
+      </div>
+
+      <div class="method-name poppins-h4">Email Us</div>
+
+      <div class="method-detail poppins-text-16"><%= mail_to 'support@agzaga.com', nil, { class: 'clear-link' } %></div>
+    </div>
+
+    <div class="col-sm-4 contact-method">
+      <div class="method-icon">
+        <%= image_tag "mobile_device.svg", alt: 'Call' %>
+      </div>
+
+      <div class="method-name poppins-h4">Call Us</div>
+
+      <div class="method-detail poppins-text-16">1-888-249-7412</div>
+    </div>
+
+    <div class="col-sm-4 contact-method chat-method">
+      <div class="method-icon">
+        <%= image_tag "paper_airplane.svg", alt: 'Chat' %>
+      </div>
+
+      <div class="method-name poppins-h4">Chat</div>
+
+      <div class="method-detail poppins-text-16">Chat with our staff</div>
+    </div>
+  </div>
+</div>
+
+# touched on 2025-07-09T17:34:41.053266Z

@@ -1,0 +1,43 @@
+<% admin_breadcrumb("FFA Fundraiser Event") %>
+
+<% content_for :page_actions do %>
+  <li>
+    <% if @events.any? && @events&.first&.is_active == true %>
+      <%= link_to 'End FFA Fundraiser Event', admin_ffa_fundraiser_event_path({id: @events&.first&.id}), method: :put, class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'Start FFA Fundraiser Event', admin_ffa_fundraiser_events_path, method: :post, class: 'btn btn-primary' %>
+    <% end %>
+  </li>
+<% end %>
+
+<h4 class="text-center mb-3">FFA Fundraiser Event</h4>
+<table class="index" width="100%" data-hook>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Started By</th>
+      <th>Starting Date</th>
+      <th>Ended By</th>
+      <th>Ending Date</th>
+      <th>Event State</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.id %></td>
+        <td><%= event.started_by&.email %></td>
+        <td><%= pretty_time(event.created_at) %></td>
+        <td><%= event.ended_by&.email %></td>
+        <td><%= pretty_time(event.ended_at) if event.ended_by.present? %></td>
+        <td><%= check_box_tag :is_active, true, event.is_active, disabled: "disabled" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @events, theme: "solidus_admin" %>
+
+# touched on 2025-07-09T17:31:36.829453Z
+# touched on 2025-07-09T17:44:11.610883Z

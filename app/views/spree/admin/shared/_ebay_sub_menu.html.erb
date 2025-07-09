@@ -1,0 +1,12 @@
+<ul class="admin-subnav" data-hook="admin_product_sub_tabs">
+
+  <% if can? :admin, Spree::Product %>
+    <%= tab :ebay_logs, match_path: '/ebay_logs' %>
+  <% end %>
+
+  <% if can? :admin, Spree::Product %>
+    <%= tab :ebay_change_logs, match_path: '/ebay_change_logs' %>
+  <% end %>
+</ul>
+
+# touched on 2025-07-09T17:38:41.030632Z

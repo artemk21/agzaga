@@ -1,0 +1,57 @@
+<%= form_for Spree.user_class.new, as: :spree_user, url: spree.create_new_session_path, method: :post, remote: true do |f| %>
+  <span class="nav-login-heading" href="#">Login</span>
+  <div class="dropdown-divider"></div>
+
+  <div id="nav-login-form">
+    <div class="form-group">
+      <div class="ag-input-neutral shipping-email">
+        <div>
+          <label class="ag-input-label" for="nav_login_email">Email</label>
+        </div>
+
+        <div class="ag-input-group-box email-validation">
+          <%= f.text_field :email, required: true, class: "ag-input-field form-control",  placeholder: "Email Address", id: "nav_login_email"%>
+
+          <div class="ag-input-icon-append">
+            <i data-field='password' id="login_email_icon" class="fa"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="ag-input-neutral shipping-email">
+        <div>
+          <label class="ag-input-label" for="nav_login_password">Password</label>
+        </div>
+
+        <div class="ag-input-group-box email-validation">
+          <%= f.password_field :password, required: true, minlength: 6, class: "ag-input-field form-control",  placeholder: "Password", id: "nav_login_password"%>
+
+          <div class="ag-input-icon-append">
+            <i data-field='password' id="login_password_icon" class="fa"></i>
+          </div>
+        </div>
+
+        <span class="error-message" id="nav_login_pass_message"></span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit t('spree.login'), id: 'nav-login-btn', class: 'btn-gradient-orange poppins-bold-text-16 nav-login-btn', tabindex: 4, autofocus: true %>
+  </div>
+
+  <div class="p-0 remember-me-group">
+    <%= f.check_box :remember_me, tabindex: 3, class: 'check-box' %>
+    <span class="checkmark"></span>
+    <%= f.label :remember_me, 'Remember Me' %>
+  </div>
+
+  <div class="p-0 forgot_password d-flex">
+    <%= link_to t('spree.forgot_password'), spree.recover_password_path,class: 'grey-link d-block poppins-bold-text-10 forgot-pass' %>
+    <%= link_to 'Forget Your Email?', spree.signup_path, class: 'grey-link d-block poppins-bold-text-10 forgot-email' %>
+  </div>
+<% end %>
+
+# touched on 2025-07-09T17:41:29.839340Z

@@ -1,0 +1,21 @@
+<div
+  class="modal checkout-login-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+  id="user-registration-modal"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="user-registration-content">
+      <%= render partial: 'spree/shared/registration_email' %>
+    </div>
+  </div>
+</div>
+
+<%= render 'spree/shared/setting_account', content: t("spree.registrating_new_user") %>
+<%= render 'spree/shared/thanks_sign_in_user' if notice&.include?("signed up successfully") %>
+<%= render 'spree/shared/linked_with_email_account' if flash[:error]&.include?("already registered with an email") %>
+
+# touched on 2025-07-09T17:28:08.019594Z
+# touched on 2025-07-09T17:34:46.921567Z

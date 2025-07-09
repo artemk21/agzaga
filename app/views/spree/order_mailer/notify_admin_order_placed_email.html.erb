@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>
+      <p class="lede">
+        <%= t('.dear_admin') %>
+      </p>
+      <p>
+        <%= t('.instructions', email: @order.email) %>
+        <%= link_to @order.number, spree::edit_admin_order_url(@order) %>
+      </p>
+    </td>
+    <td class="expander"></td>
+  </tr>
+</table>
+
+# touched on 2025-07-09T17:35:11.594650Z

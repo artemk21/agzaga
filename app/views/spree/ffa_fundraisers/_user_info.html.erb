@@ -1,0 +1,90 @@
+<div id="enrollment-form-wrapper">
+  <% edit_chapter = @ffa_chapter.id.present? && @ffa_chapter.id == session[:chapter_id] %>
+  <% submit_to = edit_chapter ? wizard_path(:user_info) : ffa_fundraisers_path %>
+  <% submit_method = edit_chapter ? :patch : :post %>
+
+  <%= form_for @ffa_chapter, url: submit_to, method: submit_method, remote: true do |f| %>
+    <div class="is-flex justify-center">
+      <div class="ffa-step-card">
+        <%= render partial: 'step_progress', locals: { level: 0 } %>
+
+        <%= hidden_field_tag :edit_request, params[:edit_request] %>
+        <div class="step-body">
+          <div class="step-header">
+            <div class="step-heading">
+              First, let’s get your info
+            </div>
+
+            <div class="sub-heading">
+              Don’t worry, we’ll only use it if we need to contact you about the fundraiser.
+            </div>
+          </div>
+
+          <div class="step-col-57">
+            <div class="material-textfield">
+              <%= f.text_field :first_name, placeholder: ' ' %>
+              <label>First Name</label>
+              <% if @ffa_chapter.errors.messages.key?(:first_name) %>
+                <span class= "ffa-error-message"><%= @ffa_chapter.errors[:first_name][0] %></span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="step-col-57">
+            <div class="material-textfield">
+              <%= f.text_field :last_name, placeholder: ' ' %>
+              <label>Last Name</label>
+              <% if @ffa_chapter.errors.messages.key?(:last_name) %>
+                <span class= "ffa-error-message"><%= @ffa_chapter.errors[:last_name][0] %></span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="step-col-57">
+            <div class="material-textfield">
+              <%= f.text_field :phone_number, placeholder: ' ' %>
+              <label>Phone Number</label>
+              <% if @ffa_chapter.errors.messages.key?(:phone_number) %>
+                <span class= "ffa-error-message"><%= @ffa_chapter.errors[:phone_number][0] %></span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="step-col-57">
+            <div class="material-textfield">
+              <%= f.text_field :email, placeholder: ' ' %>
+              <label>Email</label>
+              <% if @ffa_chapter.errors.messages.key?(:email) %>
+                <span class= "ffa-error-message"><%= @ffa_chapter.errors[:email][0] %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card-foot">
+          <div class="step-count">
+            Step 1 of 4
+          </div>
+
+          <div class="is-flex mobile-mb-16">
+            <% if !params[:edit_request].present? %>
+              <%= link_to wizard_path(:start), class: 'clear-link btn-back-link' do %>
+                <div class="btn-back">
+                  <%= image_tag('ffa-step-back-arrow.svg', class: "next-step-arrow") %> Go Back
+                </div>
+              <% end %>
+            <% end %>
+
+            <button class="btn-orange-red <%= 'full-width' if params[:edit_request].present? %>" type="submit">
+              <%= params[:edit_request].present? ? 'Save Changes' : 'Next Step'  %>
+              <%= image_tag 'next-step-arrow.svg', class: "next-step-arrow" %>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+# touched on 2025-07-09T17:38:35.824910Z
+# touched on 2025-07-09T17:42:16.831313Z

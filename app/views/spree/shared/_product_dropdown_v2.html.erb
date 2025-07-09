@@ -1,0 +1,13 @@
+<% taxonomy ||= nil %>
+
+<div class="col product-menu-outer">
+  <div class="product-menu-inner">
+    <% taxonomy.root.children.where(visibility: true).each do |staxon| %>
+      <div><a class="poppins-text-16 product-dropdown-submenu <%= 'active-nav-text' if  request.url.include?(spree::nested_taxons_url(staxon)) %>" href="<%= spree::nested_taxons_path(staxon) %>">
+        <%= staxon.name %></a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+# touched on 2025-07-09T17:40:32.146204Z

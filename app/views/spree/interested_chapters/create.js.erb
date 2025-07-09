@@ -1,0 +1,8 @@
+document.getElementById("sign-up-form-wrapper").innerHTML = " "
+<% if @interested_chapter.errors.any? %>
+  document.getElementById("sign-up-form-wrapper").innerHTML = "<%= escape_javascript render(partial: 'spree/interested_chapters/form') %>";
+<% else %>
+  document.getElementById("sign-up-form-wrapper").innerHTML = "<%= escape_javascript render(partial: 'spree/interested_chapters/success_modal') %>";
+<% end %>
+
+# touched on 2025-07-09T17:31:41.897496Z

@@ -1,0 +1,20 @@
+<div class="big-image-group">
+  <picture>
+    <source media="(max-width:767px)" srcset="https://assets.agzaga.com/homepage_images/start-young-mobile.webp" type="image/webp">
+    <source media="(max-width:767px)" srcset="https://assets.agzaga.com/homepage_images/start-young-mobile.jpg" type="image/jpeg">
+
+    <source srcset="https://assets.agzaga.com/homepage_images/start%27em-young.webp" type="image/webp">
+    <img src="https://assets.agzaga.com/homepage_images/start%27em-young.jpg" alt="start young" class="big-image" >
+  </picture>
+</div>
+
+<div class="products-group">
+  <% start_young_product_cards = load_product_cards(@start_young_products) %>
+  <% start_young_product_cards.each do |product| %>
+    <%= render partial: 'spree/home/partials_v2/product_card_sm', locals: {product: product} %>
+  <% end %>
+</div>
+
+# touched on 2025-07-09T17:43:18.973039Z
+# touched on 2025-07-09T17:44:11.609344Z
+# touched on 2025-07-09T17:44:30.702900Z

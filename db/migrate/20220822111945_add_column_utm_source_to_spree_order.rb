@@ -1,0 +1,7 @@
+class AddColumnUtmSourceToSpreeOrder < ActiveRecord::Migration[6.1]
+  def change
+    add_column :spree_orders, :utm_source, :string, default: ''
+  end
+end
+
+# touched on 2025-07-09T17:40:12.870275Z

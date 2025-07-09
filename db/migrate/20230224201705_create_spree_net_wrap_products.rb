@@ -1,0 +1,7 @@
+class CreateSpreeNetWrapProducts < ActiveRecord::Migration[6.1]
+  def change
+    create_view :spree_net_wrap_products
+  end
+end
+
+# touched on 2025-07-09T17:32:01.356401Z

@@ -1,0 +1,15 @@
+var data = '';
+
+<% @products.each do |product| %>
+  data += '<div class="col search-product"><%= j render(partial: "spree/shared/product_card", locals: { product: product }) %></div>'
+<% end %>
+
+$('#products').html(data);
+
+$('#search-section').html('<%= j (paginate(@products, :remote => true, left: 3, right: 1, window: 1)) %>');
+
+$('html, body').animate({
+  scrollTop: $(".product-search-page").offset().top
+}, 800);
+
+# touched on 2025-07-09T17:29:16.819802Z

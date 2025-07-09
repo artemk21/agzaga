@@ -1,0 +1,7 @@
+class AddDisplayTextToSpreeLabel < ActiveRecord::Migration[6.1]
+  def change
+    add_column :spree_labels, :display_text, :string
+  end
+end
+
+# touched on 2025-07-09T17:28:19.086299Z

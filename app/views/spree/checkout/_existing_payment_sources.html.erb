@@ -1,0 +1,32 @@
+<% if @wallet_payment_sources.present? %>
+  <div id="existing_cards">
+    <div data-hook="existing_cards">
+      <div class="existing-credit-card-list">
+        <div class="category-sub-title">
+          Card Information
+        </div>
+
+        <% @wallet_payment_sources.each do |wallet_payment_source| %>
+          <%=
+            render(
+              partial: "spree/checkout/existing_payment/#{wallet_payment_source.payment_source.payment_method.partial_name}",
+              locals: {
+                wallet_payment_source: wallet_payment_source,
+                default: wallet_payment_source == @default_wallet_payment_source,
+              }
+            )
+          %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="black-btn" id="new_card">New Card</div>
+  <div class="btn-section submit_payment_step">
+    <%= submit_tag 'Continue to Order Review', class: "save-btn-payment clear-link d-none" %>
+    <script>Spree.disableSaveOnClick();</script>
+  </div>
+<% end %>
+
+# touched on 2025-07-09T17:35:42.126274Z
+# touched on 2025-07-09T17:39:32.319762Z

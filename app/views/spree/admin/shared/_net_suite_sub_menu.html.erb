@@ -1,0 +1,16 @@
+<ul class="admin-subnav" data-hook="admin_product_sub_tabs">
+
+  <% if can? :admin, Spree::Product %>
+    <%= tab :net_suite_logs, match_path: '/net_suite_logs' %>
+  <% end %>
+
+  <% if can? :admin, Spree::Product %>
+    <%= tab :change_logs, match_path: '/change_logs' %>
+  <% end %>
+
+  <% if can? :admin, Spree::Product %>
+    <%= tab :ns_responses, match_path: '/ns_responses' %>
+  <% end %>
+</ul>
+
+# touched on 2025-07-09T17:26:45.142699Z

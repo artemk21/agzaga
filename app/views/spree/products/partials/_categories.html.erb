@@ -1,0 +1,139 @@
+<div class="data-container">
+  <div class="d-flex justify-content-between m-flex-wrap">
+    <div class="side-contents d-none d-md-block d-lg-block poppins-text-16 m-flex-side-contents">
+      <div class="top-section d-flex justify-content-between">
+        <div class="heading-price">Price</div>
+        <% if (h(params.dig(:filter_by_price)).present? || params[:child_id])%>
+          <%= link_to "Clear Choices", spree::deals_products_url, class: 'clear-link poppins-text-16 clear-choices' %>
+        <% end %>
+      </div>
+      <div class="price-category">
+        <div class="poppins-text-16 price-tag <%= 'sorted' if h(params.dig(:filter_by_price)).present? && h(params.dig(:filter_by_price)) == 'Any - Price'%>">
+          <% if h(params.dig(:filter_by_price)) == 'Any - Price' %>
+            <%= h(params.dig(:filter_by_price)) %>
+          <% else %>
+            <%= link_to "Any Price", spree::deals_products_url(request.query_parameters.merge(filter_by_price: 'Any - Price')),class: 'price-text' %>
+          <% end %>
+        </div>
+
+        <% @available_products.sort_by_price(0.2555e2).present? ? @state = 'enable-price' : @state = 'disable-price'%>
+        <div class="poppins-text-16 price-tag <%= @state %> <%= 'sorted' if h(params.dig(:filter_by_price)).present? && h(params.dig(:filter_by_price)) == 'Under - $25' %>">
+          <% if h(params.dig(:filter_by_price)) == "Under - $25" %>
+            <%= h(params.dig(:filter_by_price)) %>
+          <% else %>
+            <%= link_to "Under $25", spree::deals_products_url(request.query_parameters.merge(filter_by_price: 'Under - $25')),class: "price-text" %>
+          <% end %>
+        </div>
+
+        <% @available_products.sort_by_price_with_range(0.2555e2, 0.5000e2).present? ? @state = 'enable-price' : @state = 'disable-price'%>
+        <div class="poppins-text-16 price-tag <%= @state %> <%= 'sorted' if h(params.dig(:filter_by_price)).present? && h(params.dig(:filter_by_price)) == '$25 - $50' %>">
+          <% if h(params.dig(:filter_by_price)) == "$25 - $50" %>
+            <%= h(params.dig(:filter_by_price)) %>
+          <% else %>
+            <%= link_to "$25-$50", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '$25 - $50')),class: "price-text" %>
+          <% end %>
+        </div>
+
+        <% @available_products.sort_by_price_with_range(0.5000e2, 1.0000e2).present? ? @state = 'enable-price' : @state = 'disable-price'%>
+        <div class="poppins-text-16 price-tag <%= @state %> <%= 'sorted' if h(params.dig(:filter_by_price)).present? && h(params.dig(:filter_by_price)) == '$50 - $100' %>">
+          <% if h(params.dig(:filter_by_price)) == "$50 - $100" %>
+            <%= h(params.dig(:filter_by_price)) %>
+          <% else %>
+            <%= link_to "$50-$100", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '$50 - $100')),class:'price-text' %>
+          <% end %>
+        </div>
+
+        <% @available_products.sort_by_price_with_range(1.0000e2, 2.0000e2).present? ? @state = 'enable-price' : @state = 'disable-price'%>
+        <div class="poppins-text-16 price-tag <%= @state %> <%= 'sorted' if h(params.dig(:filter_by_price)).present? && h(params.dig(:filter_by_price)) == '$100 - $200' %>">
+          <% if h(params.dig(:filter_by_price)) == "$100 - $200" %>
+            <%= h(params.dig(:filter_by_price)) %>
+          <% else %>
+            <%= link_to "$100-$200", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '$100 - $200')),class:'price-text' %>
+          <% end %>
+        </div>
+
+        <% @available_products.sort_by_greater_than_price(2.0000e2).present? ? @state = 'enable-price' : @state = 'disable-price'%>
+        <div class="poppins-text-16 price-tag <%= @state %> <%= 'sorted' if h(params.dig(:filter_by_price)).present? && h(params.dig(:filter_by_price)) == '$200+' %>">
+          <% if h(params.dig(:filter_by_price)) == "$200+" %>
+            <%= h(params.dig(:filter_by_price)) %>
+          <% else %>
+            <%= link_to "$200+", spree::deals_products_url(request.query_parameters.merge(filter_by_price: '$200+')),class:'price-text' %>
+          <% end %>
+        </div>
+    </div>
+    <div class="sm-line"></div>
+
+      <div class="category-contents d-flex flex-column">
+        <% @taxonomies.each do |taxonomy|%>
+          <% if taxonomy.root.children.present?%>
+            <div class="heading">
+              <%= taxonomy.name %>
+            </div>
+          <% end %>
+
+          <% taxonomy.root.children.where(visibility: true).each do |staxon| %>
+            <div class="category-dropdown">
+              <% if staxon.children.any? %>
+                <div class="accordion-content">
+                  <div class="sub-head">
+                    <div class="pb-2 product-links question" href="#taxon<%= staxon.id %>" data-toggle="collapse" aria-expanded="false">
+                      <%= staxon.name %>
+                    </div>
+                  </div>
+
+                  <div id="taxon<%= staxon.id %>" class="collapse poppins-text-16 answer collapse">
+                    <% staxon.children.where(visibility: true).each do |taxon| %>
+                    <%  (taxon.products.sale_products.present? || taxon.products.deal_prodcuts('Deals').present?) ? @state = 'enable-category' : @state = 'disable-category'%>
+                    <div class="sub-head <%= @state %>">
+                      <div class="pb-2 product-links taxon-links <%= 'active-state' if params[:child_id]&.include?("#{taxon.id}")%>">
+
+                        <% if !params[:child_id]&.include?("#{taxon.id}")%>
+                          <% @merge_link = params[:child_id].to_a + [taxon.id] %>
+                        <% else %>
+                          <% @merge_link = params[:child_id] %>
+                        <% end %>
+
+                        <input type="checkbox" name="child_id[]" id="child-id-<%= taxon.id%>" value="<%= taxon.id%>" <%= 'checked' if params[:child_id]&.include?("#{taxon.id}")%>>
+                        <label class="mb-0 price-tag  <%= 'sorted' if params[:child_id]&.include?("#{taxon.id}")%>" for="child-id-<%= taxon.id%>" ><%= link_to taxon.name, spree::deals_products_url(request.query_parameters.merge({ :child_id => (@merge_link) })), class: 'clear-link'%></label>
+                      </div>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+
+              <% else %>
+                <% (staxon.products.sale_products.present? || staxon.products.deal_prodcuts('Deals').present?) ? @state = 'enable-category' : @state = 'disable-category'%>
+                <div class="sub-head <%= @state %>">
+                  <div class="pb-2 product-links taxon-links <%= 'active-state' if params[:child_id]&.include?("#{staxon.id}")%>">
+                    <% if !params[:child_id]&.include?("#{staxon.id}")%>
+                      <% @merge_link = params[:child_id].to_a + [staxon.id] %>
+                    <% else %>
+                      <% @merge_link = params[:child_id] %>
+                    <% end %>
+
+                    <input type="checkbox" name="child_id[]" id="child-id-<%= staxon.id%>" value="<%= staxon.id%>" <%= 'checked' if params[:child_id]&.include?("#{staxon.id}")%>>
+                    <label class="mb-0 price-tag  <%= 'sorted' if params[:child_id]&.include?("#{staxon.id}")%>" for="child-id-<%= staxon.id%>">
+                      <%= link_to staxon.name, spree::deals_products_url(request.query_parameters.merge({ :child_id => (@merge_link)})), class: 'clear-link' %>
+                    </label>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <% if (@taxonomies.last != taxonomy && taxonomy.root.children.present?) %>
+            <div class="sm-line mt-3"></div>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="gift-products">
+      <%= render partial: 'spree/products/partials/deals_section'%>
+    </div>
+  </div>
+</div>
+
+# touched on 2025-07-09T17:28:26.355325Z
+# touched on 2025-07-09T17:36:25.024253Z
+# touched on 2025-07-09T17:36:29.760958Z
